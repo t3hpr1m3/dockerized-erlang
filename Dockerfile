@@ -26,13 +26,24 @@ RUN apk add --update --no-cache \
 	./otp_build autoconf && \
 	./configure \
 		--build="$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)" \
+		--without-cosEvent \
+		--without-cosEventDomain \
+		--without-cosFileTransfer \
+		--without-cosNotification \
+		--without-cosProperty \
+		--without-cosTime \
+		--without-cosTransactions \
 		--without-debugger \
 		--without-et \
 		--without-gs \
+		--without-ic \
 		--without-javac \
 		--without-jinterface \
 		--without-megaco \
 		--without-observer \
+		--without-orber \
+		--without-percept \
+		--without-typer \
 		--without-wx && \
 	make && make install && \
 	cd / && rm -rf /tmp/buildroot && \
