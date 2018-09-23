@@ -24,7 +24,7 @@ RUN apk add --update --no-cache \
 	tar -C /tmp/buildroot/ -xzf /tmp/buildroot/OTP-${ERLANG_VERSION}.tar.gz && \
 	cd /tmp/buildroot/otp-OTP-${ERLANG_VERSION} && \
 	./otp_build autoconf && \
-	CFLAGS="-Os" ./configure \
+	./configure \
 		--build="$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)" \
 		--without-debugger \
 		--without-javac \
