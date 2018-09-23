@@ -27,8 +27,13 @@ RUN apk add --update --no-cache \
 	./configure \
 		--build="$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)" \
 		--without-debugger \
+		--without-et \
+		--without-gs \
 		--without-javac \
-		--without-jinterface && \
+		--without-jinterface \
+		--without-megaco \
+		--without-observer \
+		--without-wx && \
 	make && make install && \
 	cd / && rm -rf /tmp/buildroot && \
 	apk del .erlang-build
