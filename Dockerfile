@@ -2,12 +2,10 @@ FROM alpine:3.8 as builder
 
 MAINTAINER Josh Williams <vmizzle@gmail.com>
 
-ENV REFRESHED_AT=2018-09-24 \
+ENV REFRESHED_AT=2018-09-25 \
 	ERLANG_VERSION=21.0.9 \
 	BUILDROOT=/tmp/buildroot
 
-
-WORKDIR ${BUILDROOT}
 
 RUN apk add \
 		autoconf \
@@ -18,10 +16,10 @@ RUN apk add \
 		openssl-dev \
 		unixodbc-dev \
 		wget && \
-	wget -nv https://github.com/erlang/otp/archive/OTP-${ERLANG_VERSION}.tar.gz && \
-	tar -xzf OTP-${ERLANG_VERSION}.tar.gz && \
+	wget -P ${BUILDROOT} -nv https://github.com/erlang/otp/archive/OTP-${ERLANG_VERSION}.tar.gz && \
+	tar -C ${BUILDROOT} -xzf OTP-${ERLANG_VERSION}.tar.gz && \
 	export ERL_TOP=${BUILDROOT}/otp-OTP-${ERLANG_VERSION} && \
-	cd otp-OTP-${ERLANG_VERSION} && \
+	cd ${ERL_TOP} && \
 	./otp_build autoconf && \
 	./configure \
 		--build="$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)" \
