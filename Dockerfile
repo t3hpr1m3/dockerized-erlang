@@ -49,8 +49,6 @@ RUN apk add \
 
 FROM alpine:3.8
 
-WORKDIR /opt/erlang
-
 ENV PATH=/opt/erlang/bin:$PATH
 
 RUN apk --no-cache add \
