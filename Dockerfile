@@ -17,7 +17,7 @@ RUN apk add \
 		unixodbc-dev \
 		wget && \
 	wget -P ${BUILDROOT} -nv https://github.com/erlang/otp/archive/OTP-${ERLANG_VERSION}.tar.gz && \
-	tar -C ${BUILDROOT} -xzf OTP-${ERLANG_VERSION}.tar.gz && \
+	tar -C ${BUILDROOT} -xzf ${BUILDROOT}/OTP-${ERLANG_VERSION}.tar.gz && \
 	export ERL_TOP=${BUILDROOT}/otp-OTP-${ERLANG_VERSION} && \
 	cd ${ERL_TOP} && \
 	./otp_build autoconf && \
