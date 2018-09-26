@@ -45,7 +45,10 @@ RUN apk add \
 		--without-typer \
 		--without-wx && \
 	make -j$(nproc) && \
-	make install
+	make install && \
+	scanelf --nobanner -E ET_EXEC -BF '%F' --recursive /opt/erlang | xargs -r strip --strip-all && \
+	scanelf --nobanner -E ET_DYN -BF '%F' --recursive /opt/erlang | xargs -r strip --strip-unneeded
+
 
 FROM alpine:3.8
 
