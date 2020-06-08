@@ -2,8 +2,8 @@ FROM alpine:3.8 as builder
 
 MAINTAINER Josh Williams <vmizzle@gmail.com>
 
-ENV REFRESHED_AT=2018-09-25 \
-	ERLANG_VERSION=21.0.9 \
+ENV REFRESHED_AT=2020-06-08 \
+	ERLANG_VERSION=22.3.4 \
 	BUILDROOT=/tmp/buildroot
 
 
